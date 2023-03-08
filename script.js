@@ -18,7 +18,7 @@
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
-
+var backGround = 'image/grass.png';
 var spelerX = 700; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 
@@ -94,7 +94,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('brown');
+  background('green');
 }
 
 /**

@@ -92,7 +92,7 @@ var checkGameOver = function() {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(2000, 900);
+  createCanvas(2500, 1100);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('green');

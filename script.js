@@ -19,8 +19,8 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN
 
-var spelerX = 700; // x-positie van speler
-var spelerY = 300; // y-positie van speler
+var spelerX = 1250; // x-positie van speler
+var spelerY = 550; // y-positie van speler
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -32,7 +32,10 @@ var spelerY = 300; // y-positie van speler
 var beweegAlles = function() {
   
   // speler
-
+  if (mouseIsPressed === true){
+    spelerX = mouseX;
+    spelerY = mouseY;
+  }
   // vijand
 
   // kogel
@@ -51,7 +54,12 @@ var verwerkBotsing = function() {
   // update punten en health
 
 };
-
+/*
+function mouseClicked(){
+ spelerX = event.clientX;
+ spelerY = event.clientY;
+}
+*/
 /**
  * Tekent spelscherm
  */
@@ -64,9 +72,9 @@ var tekenAlles = function() {
 
   // speler
   fill("white");
-  rect(mouseX - 25, mouseY - 25, 50, 50);
+  rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
-  ellipse(mouseX, mouseY, 10, 10);
+  ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
 

@@ -21,10 +21,11 @@ var spelStatus = SPELEN
 
 var spelerX = 1250; // x-positie van speler
 var spelerY = 550; // y-positie van speler
+var spelerDelay = 10;
 
 var vijandX = 1250; // x-positie van vijand
 var vijandY = 550; // y-positie van vijand
-var vijandDelay = 10;
+var vijandDelay = 80;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -37,7 +38,7 @@ var beweegAlles = function() {
   
   // speler
   if (mouseIsPressed === true){
-    spelerX = mouseX;
+    spelerX = mouseX; 
     spelerY = mouseY;
   }
   // vijand

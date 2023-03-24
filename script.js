@@ -22,6 +22,10 @@ var spelStatus = SPELEN
 var spelerX = 1250; // x-positie van speler
 var spelerY = 550; // y-positie van speler
 
+var vijandX = 1250; // x-positie van vijand
+var vijandY = 550; // y-positie van vijand
+var vijandDelay = 10;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -37,6 +41,8 @@ var beweegAlles = function() {
     spelerY = mouseY;
   }
   // vijand
+  vijandX += (spelerX - vijandX) / vijandDelay;
+  vijandY += (spelerY - vijandY) / vijandDelay; 
 
   // kogel
 };
@@ -67,6 +73,10 @@ var tekenAlles = function() {
   // achtergrond
 
   // vijand
+  fill("red");
+  rect(vijandX - 25, vijandY - 25, 50, 50);
+  fill("black");
+  ellipse(vijandX, vijandY, 10, 10);
 
   // kogel
 
@@ -78,6 +88,7 @@ var tekenAlles = function() {
 
   // punten en health
 
+  //tim
 };
 
 /**

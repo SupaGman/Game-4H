@@ -27,7 +27,7 @@ https://emmauscollege.github.io/informatica/game/
 2.  teken speler juiste afmeting[]
 3.  beweeg speler[]
 4.  zorg dat speler bij de rand stopt[]
-
+5. speler delay geven zoda t lijkt alsof die naar de muis beweegt
 
 
 1. vijanden

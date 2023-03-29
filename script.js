@@ -21,11 +21,13 @@ var spelStatus = SPELEN
 
 var spelerX = 1250; // x-positie van speler
 var spelerY = 550; // y-positie van speler
-var spelerDelay = 10;
+var spelerDelay = 44;
 
 var vijandX = 1250; // x-positie van vijand
 var vijandY = 550; // y-positie van vijand
-var vijandDelay = 80;
+var vijandDelay = 60;
+
+var curSor;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -38,12 +40,13 @@ var beweegAlles = function() {
   
   // speler
   if (mouseIsPressed === true){
-    spelerX = mouseX; 
-    spelerY = mouseY;
+    
+    spelerX += (mouseX - spelerX) / spelerDelay;
+    spelerY += (mouseY - spelerY) / spelerDelay;
   }
   // vijand
-  vijandX += (spelerX - vijandX) / vijandDelay;
-  vijandY += (spelerY - vijandY) / vijandDelay; 
+    vijandX += (spelerX - vijandX) / vijandDelay;
+    vijandY += (spelerY - vijandY) / vijandDelay; 
 
   // kogel
 };
@@ -73,6 +76,9 @@ function mouseClicked(){
 var tekenAlles = function() {
   // achtergrond
 
+  //cursor
+  image(curSor, mouseX, mouseY, 75, 75);
+  
   // vijand
   fill("red");
   rect(vijandX - 25, vijandY - 25, 50, 50);
@@ -82,7 +88,7 @@ var tekenAlles = function() {
   // kogel
 
   // speler
-  fill("white");
+  fill("limegreen");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
@@ -104,7 +110,9 @@ var checkGameOver = function() {
 /* ********************************************* */
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
-
+function preload() {
+  curSor = loadImage('cursor.png');
+};
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
@@ -117,6 +125,8 @@ function setup() {
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('green');
 }
+
+
 
 /**
  * draw

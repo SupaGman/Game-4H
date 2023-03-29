@@ -24,10 +24,11 @@ https://emmauscollege.github.io/informatica/game/
  
 
 1. speler 1  []
-2.  teken speler juiste afmeting[]
-3.  beweeg speler[]
-4.  zorg dat speler bij de rand stopt[]
+2. teken speler juiste afmeting[]
+3. beweeg speler[]
+4. zorg dat speler bij de rand stopt[]
 5. speler delay geven zoda t lijkt alsof die naar de muis beweegt
+6. custoom cursor[]
 
 
 1. vijanden

@@ -28,6 +28,7 @@ var vijandY = 550; // y-positie van vijand
 var vijandDelay = 60;
 
 var curSor;
+var kasteel;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -75,7 +76,10 @@ function mouseClicked(){
  */
 var tekenAlles = function() {
   // achtergrond
-
+  // kasteel
+  
+  image(kasteel, 1100, 400, 300, 300);
+  
   //cursor
   image(curSor, mouseX, mouseY, 75, 75);
   
@@ -94,8 +98,9 @@ var tekenAlles = function() {
   ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
-
+  
   //tim
+  
 };
 
 /**
@@ -112,6 +117,7 @@ var checkGameOver = function() {
 /* ********************************************* */
 function preload() {
   curSor = loadImage('cursor.png');
+  kasteel = loadImage('castlevania.png');
 };
 /**
  * setup

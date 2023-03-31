@@ -29,6 +29,9 @@ var vijandDelay = 60;
 
 var curSor;
 var kasteel;
+var grASS;
+
+var timeR = round(0);
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -76,6 +79,7 @@ function mouseClicked(){
  */
 var tekenAlles = function() {
   // achtergrond
+  image(grASS, 2500, 1100, 2500, 1100);
   // kasteel
   
   image(kasteel, 1100, 400, 300, 300);
@@ -99,7 +103,9 @@ var tekenAlles = function() {
 
   // punten en health
   
-  //tim
+  //timer
+  textSize(100);
+  text(timeR, 100, 100, 100);
   
 };
 
@@ -118,6 +124,7 @@ var checkGameOver = function() {
 function preload() {
   curSor = loadImage('cursor.png');
   kasteel = loadImage('castlevania.png');
+  grASS = loadImage('grass.png');
 };
 /**
  * setup
@@ -131,8 +138,6 @@ function setup() {
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('green');
 }
-
-
 
 /**
  * draw

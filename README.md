@@ -28,7 +28,7 @@ https://emmauscollege.github.io/informatica/game/
 3. beweeg speler[]
 4. zorg dat speler bij de rand stopt[]
 5. speler delay geven zoda t lijkt alsof die naar de muis beweegt
-6. custoom cursor[]
+6. custom cursor[]
 
 
 1. vijanden

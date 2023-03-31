@@ -41,7 +41,7 @@ var timeR = round(0);
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function() {
-  
+
   // speler
   if (mouseIsPressed === true){
     
@@ -133,10 +133,13 @@ function preload() {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
+
   createCanvas(2500, 1100);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
+  document.body.style.backgroundImage = "url('grass.png')";
   background('green');
+
 }
 
 /**

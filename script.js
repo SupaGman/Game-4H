@@ -29,9 +29,6 @@ var vijandDelay = 60;
 
 var curSor;
 var kasteel;
-var grASS;
-
-var timeR = round(0);
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -41,12 +38,12 @@ var timeR = round(0);
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function() {
-
+  
   // speler
   if (mouseIsPressed === true){
     
-    spelerX += (mouseX - spelerX) / spelerDelay;
-    spelerY += (mouseY - spelerY) / spelerDelay;
+    spelerX += (mouseX - spelerX) / (spelerDelay * 2)
+    spelerY += (mouseY - spelerY) / (spelerDelay * 2)
   }
   // vijand
     vijandX += (spelerX - vijandX) / vijandDelay;
@@ -79,7 +76,6 @@ function mouseClicked(){
  */
 var tekenAlles = function() {
   // achtergrond
-  image(grASS, 2500, 1100, 2500, 1100);
   // kasteel
   
   image(kasteel, 1100, 400, 300, 300);
@@ -103,9 +99,7 @@ var tekenAlles = function() {
 
   // punten en health
   
-  //timer
-  textSize(100);
-  text(timeR, 100, 100, 100);
+  //tim
   
 };
 
@@ -124,7 +118,6 @@ var checkGameOver = function() {
 function preload() {
   curSor = loadImage('cursor.png');
   kasteel = loadImage('castlevania.png');
-  grASS = loadImage('grass.png');
 };
 /**
  * setup
@@ -133,14 +126,13 @@ function preload() {
  */
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-
   createCanvas(2500, 1100);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  document.body.style.backgroundImage = "url('grass.png')";
   background('green');
-
 }
+
+
 
 /**
  * draw

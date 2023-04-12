@@ -27,8 +27,16 @@ var vijandX = 1250; // x-positie van vijand
 var vijandY = 550; // y-positie van vijand
 var vijandDelay = 60;
 
+var enemySpawnx = [200, 1100, 2000];
+var enemySpawny = [200, 1000];
+
 var curSor;
-var kasteel;
+var kasteel = '';
+var kasteelX = 1100;
+var kasteelY = 400;
+var achtergrond; 
+
+var timeR = 120;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -40,16 +48,24 @@ var kasteel;
 var beweegAlles = function() {
   
   // speler
-  if (mouseIsPressed === true){
+  if (mouseIsPressed){
     
-    spelerX += (mouseX - spelerX) / (spelerDelay * 2)
-    spelerY += (mouseY - spelerY) / (spelerDelay * 2)
+    spelerX += (mouseX - spelerX) / (spelerDelay * 0.75)
+    spelerY += (mouseY - spelerY) / (spelerDelay * 0.75)
   }
   // vijand
     vijandX += (spelerX - vijandX) / vijandDelay;
     vijandY += (spelerY - vijandY) / vijandDelay; 
 
   // kogel
+
+  //timer
+
+  for(var t = 0; t < 120; t++){
+    timeR = timeR - 0.00015;
+  }
+  
+
 };
 
 /**
@@ -76,8 +92,11 @@ function mouseClicked(){
  */
 var tekenAlles = function() {
   // achtergrond
+  image(achtergrond, 0, 0, 2500, 1100);
+  //kasteel hitbox
+  fill(255, 255, 255);
+  rect(kasteelX , kasteelY, 300, 300);
   // kasteel
-  
   image(kasteel, 1100, 400, 300, 300);
   
   //cursor
@@ -89,6 +108,10 @@ var tekenAlles = function() {
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
 
+  for (var i = 0;  i < 1000; i++){
+    fill("yellow")
+    rect(enemySpawnx[2], enemySpawny[0], 50, 50);
+  }
   // kogel
 
   // speler
@@ -96,10 +119,14 @@ var tekenAlles = function() {
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
+  
+  
 
   // punten en health
   
-  //tim
+  //timer
+  textSize(100)
+  text(timeR, 100, 100,);
   
 };
 
@@ -116,8 +143,10 @@ var checkGameOver = function() {
 /* setup() en draw() functies / hoofdprogramma   */
 /* ********************************************* */
 function preload() {
+  achtergrond = loadImage('grass.png');
   curSor = loadImage('cursor.png');
   kasteel = loadImage('castlevania.png');
+  
 };
 /**
  * setup
@@ -127,6 +156,7 @@ function preload() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(2500, 1100);
+
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
   background('green');

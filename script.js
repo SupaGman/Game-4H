@@ -93,11 +93,13 @@ function mouseClicked(){
  * Tekent spelscherm
  */
 var tekenAlles = function() {
-  // achtergrond
-  image(achtergrond, 0, 0, 2500, 1100);
   //kasteel hitbox
   fill(255, 255, 255);
   rect(kasteelX , kasteelY, 300, 300);
+  
+  // achtergrond
+  image(achtergrond, 0, 0, 2500, 1100);
+  
   // kasteel
   image(kasteel, 1100, 400, 300, 300);
   

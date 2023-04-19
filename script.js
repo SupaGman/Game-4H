@@ -36,7 +36,7 @@ var kasteelX = 1100;
 var kasteelY = 400;
 var achtergrond; 
 
-var timeR = 20;
+var timeR = 0;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -60,14 +60,7 @@ var beweegAlles = function() {
   // kogel
 
   //timer
-
-  for(var t = 0; t < 120; t++){
-    timeR = timeR - 0.00015;
-
-
-  }
-  
-
+    timeR = timeR + 0.02;
 };
 
 /**
@@ -83,15 +76,8 @@ var verwerkBotsing = function() {
   // update punten en health
 
 };
-/*
-function mouseClicked(){
- spelerX = event.clientX;
- spelerY = event.clientY;
-}
-*/
-/**
- * Tekent spelscherm
- */
+
+ /* Tekent spelscherm*/
 var tekenAlles = function() {
   //kasteel hitbox
   fill(255, 255, 255);
@@ -112,9 +98,21 @@ var tekenAlles = function() {
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
 
-  for (var i = 0;  i < 1000; i++){
-    fill("yellow")
+  fill("cyan");
+  if(timeR >= 15){
     rect(enemySpawnx[2], enemySpawny[0], 50, 50);
+  }
+  if(timeR >= 10){
+    rect(enemySpawnx[0], enemySpawny[0], 50, 50);
+  }
+  if(timeR >= 5){
+    rect(enemySpawnx[2], enemySpawny[1], 50, 50);
+  }
+  if(timeR >= 5){
+    rect(enemySpawnx[1], enemySpawny[1], 50, 50);
+  }
+  if(timeR >= 30){
+    rect(enemySpawnx[0], enemySpawny[1], 50, 50);
   }
   // kogel
 
@@ -123,14 +121,12 @@ var tekenAlles = function() {
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
-  
-  
 
   // punten en health
   
   //timer
-  textSize(100)
-  text(timeR, 100, 100);
+  textSize(100);
+  text(floor(timeR), 100, 100);
   
 };
 
@@ -140,7 +136,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(timeR <= 0) {
+  if(timeR >= 100) {
     return true;
   }
   
@@ -188,7 +184,9 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
+    fill(pink);
     textSize(200);
-    text("gameover", 500, 250);
+    text("gameover", 900, 500);
+    
   }
 }

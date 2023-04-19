@@ -36,7 +36,7 @@ var kasteelX = 1100;
 var kasteelY = 400;
 var achtergrond; 
 
-var timeR = 120;
+var timeR = 20;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -63,6 +63,8 @@ var beweegAlles = function() {
 
   for(var t = 0; t < 120; t++){
     timeR = timeR - 0.00015;
+
+
   }
   
 
@@ -126,7 +128,7 @@ var tekenAlles = function() {
   
   //timer
   textSize(100)
-  text(timeR, 100, 100,);
+  text(timeR, 100, 100);
   
 };
 
@@ -136,7 +138,10 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  return false;
+  if(timeR <= 0) {
+    return true;
+  }
+  
 };
 
 /* ********************************************* */
@@ -181,6 +186,7 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+    textSize(200);
+    text("gameover", 500, 250);
   }
 }

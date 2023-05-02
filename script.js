@@ -30,6 +30,7 @@ var vijandDelay = 60;
 var enemySpawnx = [200, 1100, 2000];
 var enemySpawny = [200, 1000];
 
+var soldier;
 var curSor;
 var kasteel = '';
 var kasteelX = 1100;
@@ -84,6 +85,14 @@ var tekenAlles = function() {
   //kasteel hitbox
   fill(255, 255, 255);
   rect(kasteelX , kasteelY, 300, 300);
+
+  //hitboxen
+  fill("limegreen");
+  rect(spelerX - 25, spelerY - 25, 50, 70); 
+  fill("black");
+  ellipse(spelerX, spelerY + 10, 10, 10);
+
+  
   
   // achtergrond
   image(achtergrond, 0, 0, 2500, 1100);
@@ -129,11 +138,9 @@ var tekenAlles = function() {
   // kogel
 
   // speler
-  fill("limegreen");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
-
+  
+  
+  image(soldier, spelerX - 55, spelerY - 43, 120, 100);
   // punten en health
   
   //timer
@@ -162,6 +169,7 @@ function preload() {
   achtergrond = loadImage('grass.png');
   curSor = loadImage('cursor.png');
   kasteel = loadImage('castlevania.png');
+  soldier = loadImage('soldier.png');
   
 };
 /**

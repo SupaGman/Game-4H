@@ -114,6 +114,7 @@ var tekenAlles = function() {
     rect(enemySpawnx[0], enemySpawny[0], 50, 50);
     enemySpawnx[0] = enemySpawnx[0] + 1;
     enemySpawny[0] = enemySpawny[0] + 0.7;
+    
   }
   if(timeR >= 10){
     rect(enemySpawnx[0], enemySpawny[1], 50, 50);

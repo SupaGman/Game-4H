@@ -38,6 +38,8 @@ var achtergrond;
 
 var timeR = 0;
 
+var spawn = 0;
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -99,20 +101,30 @@ var tekenAlles = function() {
   ellipse(vijandX, vijandY, 10, 10);
 
   fill("cyan");
-  if(timeR >= 15){
-    rect(enemySpawnx[2], enemySpawny[0], 50, 50);
+  if(timeR >= 5 || timeR >= 20){
+    rect(enemySpawnx[0], enemySpawny[0], 50, 50);
+    enemySpawnx[0] = enemySpawnx[0] + 1;
+    enemySpawny[0] = enemySpawny[0] + 0.7;
   }
   if(timeR >= 10){
-    rect(enemySpawnx[0], enemySpawny[0], 50, 50);
+    rect(enemySpawnx[0], enemySpawny[1], 50, 50);
+    enemySpawnx[0] = enemySpawnx[0] + 1;
+    enemySpawny[1] = enemySpawny[1] - 1;
   }
-  if(timeR >= 5){
+  if(timeR >= 20){
     rect(enemySpawnx[2], enemySpawny[1], 50, 50);
+    enemySpawnx[2] = enemySpawnx[2] - 1;
+    enemySpawny[1] = enemySpawny[1] - 1;
   }
-  if(timeR >= 5){
+  if(timeR >= 40){
     rect(enemySpawnx[1], enemySpawny[1], 50, 50);
+    enemySpawnx[1] = enemySpawnx[1] + 1;
+    enemySpawny[1] = enemySpawny[1] + 1;
   }
   if(timeR >= 30){
-    rect(enemySpawnx[0], enemySpawny[1], 50, 50);
+    rect(enemySpawnx[2], enemySpawny[1], 50, 50);
+    enemySpawnx[2] = enemySpawnx[2] + 1;
+    enemySpawny[1] = enemySpawny[1] + 1;
   }
   // kogel
 
@@ -139,6 +151,7 @@ var checkGameOver = function() {
   if(timeR >= 100) {
     return true;
   }
+ 
   
 };
 
@@ -186,7 +199,7 @@ function draw() {
     // teken game-over scherm
     fill(pink);
     textSize(200);
-    text("gameover", 900, 500);
+    text('gameover', 900, 500);
     
   }
 }

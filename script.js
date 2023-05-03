@@ -39,7 +39,17 @@ var achtergrond;
 
 var timeR = 0;
 
-var spawn = 0;
+var xspawn1 = 200;
+var yspawn1 = 200;
+
+var xspawn2 = 2000;
+var yspawn2 = 200;
+
+var xspawn3 = 2000;
+var yspawn3 = 1000;
+
+var xspawn4 = 200;
+var yspawn4 = 1000;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -74,8 +84,15 @@ var beweegAlles = function() {
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
 
-  // botsing kogel tegen vijand
-
+  // botsing kasteel tegen vijand
+  if (xspawn1 >= kasteelX && yspawn1 >= kasteelY){
+    xspawn1 = xspawn1 - 1;
+    yspawn1 = yspawn1 - 0.4;
+  }
+  if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
+    xspawn2 = xspawn2 + 1;
+    yspawn2 = yspawn2 - 0.6;
+  }
   // update punten en health
 
 };
@@ -109,32 +126,26 @@ var tekenAlles = function() {
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
 
-  fill("cyan");
-  if(timeR >= 5 || timeR >= 20){
-    rect(enemySpawnx[0], enemySpawny[0], 50, 50);
-    enemySpawnx[0] = enemySpawnx[0] + 1;
-    enemySpawny[0] = enemySpawny[0] + 0.7;
-    
+  fill("red");
+  if(timeR >= 5){
+    rect(xspawn1, yspawn1, 50, 50);
+    xspawn1++;
+    yspawn1 = yspawn1 + 0.4;
   }
-  if(timeR >= 10){
-    rect(enemySpawnx[0], enemySpawny[1], 50, 50);
-    enemySpawnx[0] = enemySpawnx[0] + 1;
-    enemySpawny[1] = enemySpawny[1] - 1;
+  if(timeR >= 15){
+    rect(xspawn2, yspawn2, 50, 50);
+    xspawn2--;
+    yspawn2 = yspawn2 + 0.6;
   }
-  if(timeR >= 20){
-    rect(enemySpawnx[2], enemySpawny[1], 50, 50);
-    enemySpawnx[2] = enemySpawnx[2] - 1;
-    enemySpawny[1] = enemySpawny[1] - 1;
+    if(timeR >= 25){
+    rect(xspawn3, yspawn3, 50, 50);
+    xspawn3--;
+    yspawn3 = yspawn3 - 0.7;
   }
-  if(timeR >= 40){
-    rect(enemySpawnx[1], enemySpawny[1], 50, 50);
-    enemySpawnx[1] = enemySpawnx[1] + 1;
-    enemySpawny[1] = enemySpawny[1] + 1;
-  }
-  if(timeR >= 30){
-    rect(enemySpawnx[2], enemySpawny[1], 50, 50);
-    enemySpawnx[2] = enemySpawnx[2] + 1;
-    enemySpawny[1] = enemySpawny[1] + 1;
+  if(timeR >= 35){
+    rect(xspawn4, yspawn4, 50, 50);
+    xspawn4++;
+    yspawn4 = yspawn4 - 0.5;
   }
   // kogel
 
@@ -145,8 +156,11 @@ var tekenAlles = function() {
   // punten en health
   
   //timer
+  fill("cyan");
   textSize(100);
   text(floor(timeR), 100, 100);
+
+  
   
 };
 

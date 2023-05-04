@@ -51,6 +51,8 @@ var yspawn3 = 1000;
 var xspawn4 = 200;
 var yspawn4 = 1000;
 
+var enD = "GAMEOVER NOOB XD";
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -92,6 +94,14 @@ var verwerkBotsing = function() {
   if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
     xspawn2 = xspawn2 + 1;
     yspawn2 = yspawn2 - 0.6;
+  }
+  if (xspawn3 <= kasteelX + 270 && yspawn3 >= kasteelY){
+    xspawn3 = xspawn3 + 1;
+    yspawn3 = yspawn3 + 0.7;
+  }
+  if (xspawn4 >= kasteelX + 270 && yspawn4 >= kasteelY){
+    xspawn4 = xspawn4 - 1;
+    yspawn4 = yspawn4 - 0.5;
   }
   // update punten en health
 
@@ -137,7 +147,7 @@ var tekenAlles = function() {
     xspawn2--;
     yspawn2 = yspawn2 + 0.6;
   }
-    if(timeR >= 25){
+  if(timeR >= 25){
     rect(xspawn3, yspawn3, 50, 50);
     xspawn3--;
     yspawn3 = yspawn3 - 0.7;
@@ -147,6 +157,7 @@ var tekenAlles = function() {
     xspawn4++;
     yspawn4 = yspawn4 - 0.5;
   }
+  
   // kogel
 
   // speler
@@ -220,9 +231,9 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-    fill(pink);
+    fill("maroon");
     textSize(200);
-    text('gameover', 900, 500);
+    text(enD, 200, 500);
     
   }
 }

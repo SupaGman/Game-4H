@@ -99,9 +99,9 @@ var verwerkBotsing = function() {
     xspawn3 = xspawn3 + 1;
     yspawn3 = yspawn3 + 0.7;
   }
-  if (xspawn4 >= kasteelX + 270 && yspawn4 >= kasteelY){
+  if (xspawn4 >= kasteelX && yspawn4 >= kasteelY){
     xspawn4 = xspawn4 - 1;
-    yspawn4 = yspawn4 - 0.5;
+    yspawn4 = yspawn4 + 0.5;
   }
   // update punten en health
 

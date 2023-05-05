@@ -53,13 +53,16 @@ var yspawn4 = 1000;
 
 var enD = "GAMEOVER NOOB XD";
 
-var enemHP1 = 10;
+var kastHP = 10;
+var kasT;
+
+var enemHP1 = 20;
 var enem1;
-var enemHP2 = 10;
+var enemHP2 = 20;
 var enem2;
-var enemHP3 = 10;
+var enemHP3 = 20;
 var enem3;
-var enemHP4 = 15;
+var enemHP4 = 30;
 var enem4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -77,9 +80,9 @@ var beweegAlles = function() {
     spelerY += (mouseY - spelerY) / (spelerDelay * 0.75)
   }
   // vijand
-    vijandX += (spelerX - vijandX) / vijandDelay;
+    /*vijandX += (spelerX - vijandX) / vijandDelay;
     vijandY += (spelerY - vijandY) / vijandDelay; 
-
+  */
   // kogel
 
   //timer
@@ -93,7 +96,19 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-
+  if(spelerX === xspawn1 + 25 && spelerY === yspawn1 + 25){
+    enemHP1--;
+  }
+  if(spelerX === xspawn2 + 25 && spelerY === yspawn2 + 25){
+    enemHP2--;
+  }
+  if(spelerX === xspawn3 + 25 && spelerY === yspawn3 + 25){
+    enemHP3--;
+  }
+  if(spelerX === xspawn4 + 25 && spelerY === yspawn4 + 25){
+    enemHP4--;
+  }
+  
   // botsing kasteel tegen vijand
   if (xspawn1 >= kasteelX && yspawn1 >= kasteelY){
     xspawn1 = xspawn1 - 1;
@@ -112,7 +127,9 @@ var verwerkBotsing = function() {
     yspawn4 = yspawn4 + 0.5;
   }
   // update punten en health
-
+  if(xspawn1 >= kasteelX && yspawn1 >= kasteelY){
+    kastHP--;
+  }
 };
 
  /* Tekent spelscherm*/
@@ -133,14 +150,21 @@ var tekenAlles = function() {
   image(achtergrond, 0, 0, 2500, 1100);
   
   // kasteel
-  image(kasteel, 1100, 400, 300, 300);
-  
+  if(kastHP >= 0){
+    kasT = true;
+  }
+  else{
+    kasT = false;
+  }
+  if(kasT === true){
+    image(kasteel, 1100, 400, 300, 300);
+  }
   //cursor
   image(curSor, mouseX, mouseY, 75, 75);
   
   // vijand
-  fill("red");
-  rect(vijandX - 25, vijandY - 25, 50, 50);
+  /*fill("red");
+  rect(vijandX - 25, vijandY - 25, 50, 50);*/
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
 

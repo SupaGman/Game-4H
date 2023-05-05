@@ -53,6 +53,14 @@ var yspawn4 = 1000;
 
 var enD = "GAMEOVER NOOB XD";
 
+var enemHP1 = 10;
+var enem1;
+var enemHP2 = 10;
+var enem2;
+var enemHP3 = 10;
+var enem3;
+var enemHP4 = 15;
+var enem4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -136,23 +144,48 @@ var tekenAlles = function() {
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
 
+//geeft laat enemy spawnen als ie hp heeft en de tijd rijp is
+  if(timeR >= 5 && enemHP1 >= 0){
+    enem1 = true;
+  }
+  else {
+    enem1 = false;
+  }
+  if(timeR >= 15 && enemHP2 >= 0){
+    enem2 = true;
+  }
+  else {
+    enem2 = false;
+  }
+  if(timeR >= 25 && enemHP3 >= 0){
+    enem3 = true;
+  }
+  else {
+    enem3 = false;
+  }
+  if(timeR >= 35 && enemHP4 >= 0){
+    enem4 = true;
+  }
+  else {
+    enem4 = false;
+  }
   fill("red");
-  if(timeR >= 5){
+  if(enem1 === true){
     rect(xspawn1, yspawn1, 50, 50);
     xspawn1++;
     yspawn1 = yspawn1 + 0.4;
   }
-  if(timeR >= 15){
+  if(enem2 === true){
     rect(xspawn2, yspawn2, 50, 50);
     xspawn2--;
     yspawn2 = yspawn2 + 0.6;
   }
-  if(timeR >= 25){
+  if(enem3 === true){
     rect(xspawn3, yspawn3, 50, 50);
     xspawn3--;
     yspawn3 = yspawn3 - 0.7;
   }
-  if(timeR >= 35){
+  if(enem4 === true){
     rect(xspawn4, yspawn4, 50, 50);
     xspawn4++;
     yspawn4 = yspawn4 - 0.5;

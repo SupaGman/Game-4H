@@ -200,6 +200,7 @@ var tekenAlles = function() {
     enem4 = false;
   }
   fill("red");
+  noStroke();
   if(enem1 === true){
     rect(xspawn1, yspawn1, 50, 50);
     xspawn1++;

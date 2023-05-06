@@ -53,8 +53,10 @@ var yspawn4 = 1000;
 
 var enD = "GAMEOVER NOOB XD";
 
-var kastHP = 10;
+var kastHP = 1000;
 var kasT;
+var kastDes;
+var kastTOT = "/1000";
 
 var enemHP1 = 20;
 var enem1;
@@ -109,27 +111,28 @@ var verwerkBotsing = function() {
     enemHP4--;
   }
   
-  // botsing kasteel tegen vijand
+  // botsing kasteel tegen vijand en haalt hp weg van kasteel
   if (xspawn1 >= kasteelX && yspawn1 >= kasteelY){
     xspawn1 = xspawn1 - 1;
     yspawn1 = yspawn1 - 0.4;
+    kastHP = kastHP - 0.04;
   }
   if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
     xspawn2 = xspawn2 + 1;
     yspawn2 = yspawn2 - 0.6;
+    kastHP = kastHP - 0.04;
   }
   if (xspawn3 <= kasteelX + 270 && yspawn3 >= kasteelY){
     xspawn3 = xspawn3 + 1;
     yspawn3 = yspawn3 + 0.7;
+    kastHP = kastHP - 0.04;
   }
   if (xspawn4 >= kasteelX && yspawn4 >= kasteelY){
     xspawn4 = xspawn4 - 1;
     yspawn4 = yspawn4 + 0.5;
+    kastHP = kastHP - 0.04;
   }
-  // update punten en health
-  if(xspawn1 >= kasteelX && yspawn1 >= kasteelY){
-    kastHP--;
-  }
+
 };
 
  /* Tekent spelscherm*/
@@ -150,7 +153,7 @@ var tekenAlles = function() {
   image(achtergrond, 0, 0, 2500, 1100);
   
   // kasteel
-  if(kastHP >= 0){
+  if(kastHP >= 1){
     kasT = true;
   }
   else{
@@ -158,6 +161,9 @@ var tekenAlles = function() {
   }
   if(kasT === true){
     image(kasteel, 1100, 400, 300, 300);
+  }
+  if(kastHP <= 2){
+    image(kastDes, 1100, 400, 300, 300);
   }
   //cursor
   image(curSor, mouseX, mouseY, 75, 75);
@@ -227,7 +233,12 @@ var tekenAlles = function() {
   fill("cyan");
   textSize(100);
   text(floor(timeR), 100, 100);
-
+  fill("green");
+  rect(750, 10, 1000, 60);
+  fill("black");
+  textSize(50);
+  text(floor(kastHP), 1100, 60);
+  text(kastTOT, 1250, 60);
   
   
 };
@@ -238,7 +249,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(timeR >= 100) {
+  if(kastHP <= 0) {
     return true;
   }
  
@@ -253,6 +264,7 @@ function preload() {
   curSor = loadImage('cursor.png');
   kasteel = loadImage('castlevania.png');
   soldier = loadImage('soldier.png');
+  kastDes = loadImage('kastDes.png');
   
 };
 /**

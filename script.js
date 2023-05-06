@@ -234,6 +234,7 @@ var tekenAlles = function() {
   fill("cyan");
   textSize(100);
   text(floor(timeR), 100, 100);
+  
   fill("green");
   rect(750, 10, 1000, 60);
   fill("black");

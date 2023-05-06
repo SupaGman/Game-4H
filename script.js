@@ -305,6 +305,8 @@ function draw() {
     fill("maroon");
     textSize(200);
     text(enD, 200, 500);
+    text("time survived:", 200, 675);
+    text(floor(timeR), 1450, 675);
     
   }
 }

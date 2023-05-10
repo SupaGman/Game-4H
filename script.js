@@ -58,13 +58,13 @@ var kasT;
 var kastDes;
 var kastTOT = "/1000";
 
-var enemHP1 = 20;
+var enemHP1 = 100;
 var enem1;
-var enemHP2 = 20;
+var enemHP2 = 100;
 var enem2;
-var enemHP3 = 20;
+var enemHP3 = 100;
 var enem3;
-var enemHP4 = 30;
+var enemHP4 = 200;
 var enem4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -98,16 +98,16 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-  if(spelerX >= xspawn1 + 25 && spelerY <= yspawn1 + 25){
+  if(spelerX <= xspawn1 + 25 && spelerX >= xspawn1 - 25 && spelerY <= yspawn1 + 25     && spelerY >= yspawn1 - 25){
     enemHP1--;
   }
-  if(spelerX >= xspawn2 + 25 && spelerY <= yspawn2 + 25){
+  if(spelerX >= xspawn2 - 25  && spelerX <= xspawn2 + 25 && spelerY <= yspawn2 + 25    && spelerY >= yspawn2 - 25){
     enemHP2--;
   }
-  if(spelerX >= xspawn3 + 25 && spelerY >= yspawn3 + 25){
+  if(spelerX >= xspawn3 - 25 && spelerX <= xspawn3 + 25 && spelerY >= yspawn3 - 25     && spelerY <= yspawn3 + 25){
     enemHP3--;
   }
-  if(spelerX <= xspawn4 + 25 && spelerY >= yspawn4 + 25){
+  if(spelerX <= xspawn4 + 25 && spelerX >= xspawn4 - 25 && spelerY >= yspawn4 - 25     && spelerY <= yspawn4 + 25){
     enemHP4--;
   }
   
@@ -115,22 +115,22 @@ var verwerkBotsing = function() {
   if (xspawn1 >= kasteelX && yspawn1 >= kasteelY){
     xspawn1 = xspawn1 - 1;
     yspawn1 = yspawn1 - 0.4;
-    kastHP = kastHP - 0.04;
+    kastHP = kastHP - 0.05;
   }
   if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
     xspawn2 = xspawn2 + 1;
     yspawn2 = yspawn2 - 0.6;
-    kastHP = kastHP - 0.04;
+    kastHP = kastHP - 0.05;
   }
   if (xspawn3 <= kasteelX + 270 && yspawn3 >= kasteelY){
     xspawn3 = xspawn3 + 1;
     yspawn3 = yspawn3 + 0.7;
-    kastHP = kastHP - 0.04;
+    kastHP = kastHP - 0.05;
   }
   if (xspawn4 >= kasteelX && yspawn4 >= kasteelY){
     xspawn4 = xspawn4 - 1;
     yspawn4 = yspawn4 + 0.5;
-    kastHP = kastHP - 0.04;
+    kastHP = kastHP - 0.05;
   }
 
 };
@@ -181,26 +181,26 @@ var tekenAlles = function() {
   else {
     enem1 = false;
   }
-  if(timeR >= 15 && enemHP2 >= 0){
+  if(timeR >= 10 && enemHP2 >= 0){
     enem2 = true;
   }
   else {
     enem2 = false;
   }
-  if(timeR >= 25 && enemHP3 >= 0){
+  if(timeR >= 15 && enemHP3 >= 0){
     enem3 = true;
   }
   else {
     enem3 = false;
   }
-  if(timeR >= 35 && enemHP4 >= 0){
+  if(timeR >= 20 && enemHP4 >= 0){
     enem4 = true;
   }
   else {
     enem4 = false;
   }
   fill("red");
-  noStroke();
+
   if(enem1 === true){
     rect(xspawn1, yspawn1, 50, 50);
     xspawn1++;
@@ -234,15 +234,15 @@ var tekenAlles = function() {
   fill("cyan");
   textSize(100);
   text(floor(timeR), 100, 100);
-  
-  fill("green");
+  //hp bar
+  fill("red");
   rect(750, 10, 1000, 60);
+  fill("green");
+  rect(750, 10, kastHP, 60);
   fill("black");
   textSize(50);
   text(floor(kastHP), 1100, 60);
-  text(kastTOT, 1250, 60);
-  
-  
+  text(kastTOT, 1250, 60); 
 };
 
 /**
@@ -254,8 +254,6 @@ var checkGameOver = function() {
   if(kastHP <= 0) {
     return true;
   }
- 
-  
 };
 
 /* ********************************************* */

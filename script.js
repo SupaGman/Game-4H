@@ -98,16 +98,16 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-  if(spelerX === xspawn1 + 25 && spelerY === yspawn1 + 25){
+  if(spelerX >= xspawn1 + 25 && spelerY <= yspawn1 + 25){
     enemHP1--;
   }
-  if(spelerX === xspawn2 + 25 && spelerY === yspawn2 + 25){
+  if(spelerX >= xspawn2 + 25 && spelerY <= yspawn2 + 25){
     enemHP2--;
   }
-  if(spelerX === xspawn3 + 25 && spelerY === yspawn3 + 25){
+  if(spelerX >= xspawn3 + 25 && spelerY >= yspawn3 + 25){
     enemHP3--;
   }
-  if(spelerX === xspawn4 + 25 && spelerY === yspawn4 + 25){
+  if(spelerX <= xspawn4 + 25 && spelerY >= yspawn4 + 25){
     enemHP4--;
   }
   
@@ -302,6 +302,8 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
+    fill("white");
+    rect(150, 240, 2200, 550);
     fill("maroon");
     textSize(200);
     text(enD, 200, 500);

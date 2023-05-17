@@ -66,6 +66,11 @@ var enemHP3 = 100;
 var enem3;
 var enemHP4 = 200;
 var enem4;
+
+var enemTyp1;
+var enemTyp2;
+var enemTyp3;
+var enemTyp4;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -202,22 +207,26 @@ var tekenAlles = function() {
   fill("red");
 
   if(enem1 === true){
-    rect(xspawn1, yspawn1, 50, 50);
+    rect(xspawn1, yspawn1, 40, 70);
+    image(enemTyp1, xspawn1 - 25, yspawn1 - 25, 100, 100);
     xspawn1++;
     yspawn1 = yspawn1 + 0.4;
   }
   if(enem2 === true){
     rect(xspawn2, yspawn2, 50, 50);
+    image(enemTyp2, xspawn2 - 10, yspawn2 - 10, 80, 80);
     xspawn2--;
     yspawn2 = yspawn2 + 0.6;
   }
   if(enem3 === true){
     rect(xspawn3, yspawn3, 50, 50);
+    image(enemTyp3, xspawn3 - 25, yspawn3 - 25, 100, 100);
     xspawn3--;
     yspawn3 = yspawn3 - 0.7;
   }
   if(enem4 === true){
     rect(xspawn4, yspawn4, 50, 50);
+    image(enemTyp4, xspawn4 - 40, yspawn4 - 40, 150, 150);
     xspawn4++;
     yspawn4 = yspawn4 - 0.5;
   }
@@ -265,6 +274,10 @@ function preload() {
   kasteel = loadImage('castlevania.png');
   soldier = loadImage('soldier.png');
   kastDes = loadImage('kastDes.png');
+  enemTyp1 = loadImage('npc/soldier2.png');
+  enemTyp2 = loadImage('npc/soldier3.png');
+  enemTyp3 = loadImage('npc/soldier8.png');
+  enemTyp4 = loadImage('npc/soldier4.png');
   
 };
 /**

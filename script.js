@@ -27,9 +27,6 @@ var vijandX = 1250; // x-positie van vijand
 var vijandY = 550; // y-positie van vijand
 var vijandDelay = 60;
 
-var enemySpawnx = [200, 1100, 2000];
-var enemySpawny = [200, 1000];
-
 var soldier;
 var curSor;
 var kasteel = '';
@@ -112,7 +109,7 @@ var verwerkBotsing = function() {
   if(spelerX >= xspawn3 - 25 && spelerX <= xspawn3 + 25 && spelerY >= yspawn3 - 25     && spelerY <= yspawn3 + 25){
     enemHP3--;
   }
-  if(spelerX <= xspawn4 + 25 && spelerX >= xspawn4 - 25 && spelerY >= yspawn4 - 25     && spelerY <= yspawn4 + 25){
+  if(spelerX <= xspawn4 + 35 && spelerX >= xspawn4 - 35 && spelerY >= yspawn4 - 35     && spelerY <= yspawn4 + 35){
     enemHP4--;
   }
   
@@ -137,7 +134,49 @@ var verwerkBotsing = function() {
     yspawn4 = yspawn4 + 0.5;
     kastHP = kastHP - 0.05;
   }
-
+  
+  
+  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false){
+   if(enem1 === true){
+    rect(xspawn1,yspawn1 + 50, 40, 70);
+    image(enemTyp1, xspawn1 - 25, yspawn1 - 25, 100, 100);
+    xspawn1++;
+    yspawn1 = yspawn1 + 0.4;
+  }
+  if(enem2 === true){
+    rect(xspawn2 - 500, yspawn2 + 200, 50, 50);
+    image(enemTyp2, xspawn2 - 10, yspawn2 - 10, 80, 80);
+    xspawn2--;
+    yspawn2 = yspawn2 + 0.6;
+  }
+  if(enem3 === true){
+    rect(xspawn3 - 300, yspawn3, 50, 50);
+    image(enemTyp3, xspawn3 - 250, yspawn3 - 25, 100, 100);
+    xspawn3--;
+    yspawn3 = yspawn3 - 0.7;
+  }
+  if(enem4 === true){
+    rect(xspawn4 - 300, yspawn4 + 100, 50, 50);
+    image(enemTyp4, xspawn4 - 40, yspawn4 - 40, 150, 150);
+    xspawn4++;
+    yspawn4 = yspawn4 - 0.5;
+  }
+    
+    
+    
+    /*xspawn1 === 1000;
+    yspawn1 === 200;
+    xspawn2 === 2000;
+    yspawn2 === 200;
+    xspawn3 === 2000;
+    yspawn3 === 1000;
+    xspawn4 === 200;
+    yspawn4 === 1000;
+    enemHP1 === 100;
+    enemHP2 === 100;
+    enemHP3 === 100;
+    enemHP4 === 200;*/
+  }
 };
 
  /* Tekent spelscherm*/
@@ -180,25 +219,25 @@ var tekenAlles = function() {
   ellipse(vijandX, vijandY, 10, 10);
 
 //geeft laat enemy spawnen als ie hp heeft en de tijd rijp is
-  if(timeR >= 5 && enemHP1 >= 0){
+  if(timeR >= 5 && enemHP1 >= 0 || timeR >= 40){
     enem1 = true;
   }
   else {
     enem1 = false;
   }
-  if(timeR >= 10 && enemHP2 >= 0){
+  if(timeR >= 10 && enemHP2 >= 0 || timeR >= 45){
     enem2 = true;
   }
   else {
     enem2 = false;
   }
-  if(timeR >= 15 && enemHP3 >= 0){
+  if(timeR >= 15 && enemHP3 >= 0 || timeR >= 50){
     enem3 = true;
   }
   else {
     enem3 = false;
   }
-  if(timeR >= 20 && enemHP4 >= 0){
+  if(timeR >= 20 && enemHP4 >= 0 || timeR >= 55){
     enem4 = true;
   }
   else {
@@ -230,7 +269,7 @@ var tekenAlles = function() {
     xspawn4++;
     yspawn4 = yspawn4 - 0.5;
   }
-  
+ 
   // kogel
 
   // speler

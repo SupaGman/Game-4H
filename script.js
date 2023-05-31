@@ -100,13 +100,13 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-  if(spelerX <= xspawn1 + 25 && spelerX >= xspawn1 - 25 && spelerY <= yspawn1 + 25     && spelerY >= yspawn1 - 25){
+  if(spelerX <= xspawn1 + 35 && spelerX >= xspawn1 - 35 && spelerY <= yspawn1 + 35     && spelerY >= yspawn1 - 35){
     enemHP1--;
   }
-  if(spelerX >= xspawn2 - 25  && spelerX <= xspawn2 + 25 && spelerY <= yspawn2 + 25    && spelerY >= yspawn2 - 25){
+  if(spelerX >= xspawn2 - 35  && spelerX <= xspawn2 + 35 && spelerY <= yspawn2 + 35    && spelerY >= yspawn2 - 35){
     enemHP2--;
   }
-  if(spelerX >= xspawn3 - 25 && spelerX <= xspawn3 + 25 && spelerY >= yspawn3 - 25     && spelerY <= yspawn3 + 25){
+  if(spelerX >= xspawn3 - 35 && spelerX <= xspawn3 + 35 && spelerY >= yspawn3 - 35     && spelerY <= yspawn3 + 35){
     enemHP3--;
   }
   if(spelerX <= xspawn4 + 35 && spelerX >= xspawn4 - 35 && spelerY >= yspawn4 - 35     && spelerY <= yspawn4 + 35){
@@ -122,7 +122,7 @@ var verwerkBotsing = function() {
   if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
     xspawn2 = xspawn2 + 1;
     yspawn2 = yspawn2 - 0.6;
-    kastHP = kastHP - 0.05;
+    kastHP = kastHP - 0.1;
   }
   if (xspawn3 <= kasteelX + 270 && yspawn3 >= kasteelY){
     xspawn3 = xspawn3 + 1;
@@ -136,34 +136,20 @@ var verwerkBotsing = function() {
   }
   
   
-  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false){
-   if(enem1 === true){
-    rect(xspawn1,yspawn1 + 50, 40, 70);
-    image(enemTyp1, xspawn1 - 25, yspawn1 - 25, 100, 100);
-    xspawn1++;
-    yspawn1 = yspawn1 + 0.4;
-  }
-  if(enem2 === true){
-    rect(xspawn2 - 500, yspawn2 + 200, 50, 50);
-    image(enemTyp2, xspawn2 - 10, yspawn2 - 10, 80, 80);
-    xspawn2--;
-    yspawn2 = yspawn2 + 0.6;
-  }
-  if(enem3 === true){
-    rect(xspawn3 - 300, yspawn3, 50, 50);
-    image(enemTyp3, xspawn3 - 250, yspawn3 - 25, 100, 100);
-    xspawn3--;
-    yspawn3 = yspawn3 - 0.7;
-  }
-  if(enem4 === true){
-    rect(xspawn4 - 300, yspawn4 + 100, 50, 50);
-    image(enemTyp4, xspawn4 - 40, yspawn4 - 40, 150, 150);
-    xspawn4++;
-    yspawn4 = yspawn4 - 0.5;
-  }
-    
-    
-    
+  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false && timeR > 50){
+    xspawn1 === 1000;
+    yspawn1 === 200;
+    xspawn2 === 2000;
+    yspawn2 === 200;
+    xspawn3 === 2000;
+    yspawn3 === 1000;
+    xspawn4 === 200;
+    yspawn4 === 1000;
+    enemHP1 === 100;
+    enemHP2 === 100;
+    enemHP3 === 100;
+    enemHP4 === 200;
+
     /*xspawn1 === 1000;
     yspawn1 === 200;
     xspawn2 === 2000;
@@ -299,7 +285,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0) {
+  if(kastHP <= 0 || timeR >= 300) {
     return true;
   }
 };
@@ -352,13 +338,13 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-    fill("white");
-    rect(150, 240, 2200, 550);
+    fill("grey");
+    rect(150, 750, 2200, 450);
     fill("maroon");
     textSize(200);
-    text(enD, 200, 500);
-    text("time survived:", 200, 675);
-    text(floor(timeR), 1450, 675);
+    text(enD, 200, 910);
+    text("time survived:", 200, 1075);
+    text(floor(timeR), 1450, 1075);
     
   }
 }

@@ -136,7 +136,7 @@ var verwerkBotsing = function() {
   }
   
   
-  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false && timeR > 50){
+  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false && timeR > 40){
     xspawn1 === 1000;
     yspawn1 === 200;
     xspawn2 === 2000;
@@ -149,7 +149,31 @@ var verwerkBotsing = function() {
     enemHP2 === 100;
     enemHP3 === 100;
     enemHP4 === 200;
-
+    
+  /*if(timeR >= 45 && enemHP1 >= 0){
+    enem1 = true;
+  }
+  else {
+    enem1 = false;
+   }
+  if(timeR >= 50 && enemHP2 >= 0){
+    enem2 = true;
+  }
+  else {
+    enem2 = false;
+  }
+  if(timeR >= 55 && enemHP3 >= 0){
+    enem3 = true;
+  }
+  else {
+    enem3 = false;
+  }
+  if(timeR >= 60 && enemHP4 >= 0){
+    enem4 = true;
+  }
+  else {
+    enem4 = false;
+  }
     /*xspawn1 === 1000;
     yspawn1 === 200;
     xspawn2 === 2000;
@@ -205,30 +229,31 @@ var tekenAlles = function() {
   ellipse(vijandX, vijandY, 10, 10);
 
 //geeft laat enemy spawnen als ie hp heeft en de tijd rijp is
-  if(timeR >= 5 && enemHP1 >= 0 || timeR >= 40){
+  if(timeR >= 5 && enemHP1 >= 0){
     enem1 = true;
   }
   else {
     enem1 = false;
   }
-  if(timeR >= 10 && enemHP2 >= 0 || timeR >= 45){
+  if(timeR >= 10 && enemHP2 >= 0){
     enem2 = true;
   }
   else {
     enem2 = false;
   }
-  if(timeR >= 15 && enemHP3 >= 0 || timeR >= 50){
+  if(timeR >= 15 && enemHP3 >= 0){
     enem3 = true;
   }
   else {
     enem3 = false;
   }
-  if(timeR >= 20 && enemHP4 >= 0 || timeR >= 55){
+  if(timeR >= 20 && enemHP4 >= 0){
     enem4 = true;
   }
   else {
     enem4 = false;
   }
+  
   fill("red");
 
   if(enem1 === true){

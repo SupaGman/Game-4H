@@ -17,7 +17,9 @@
 /* ********************************************* */
 const SPELEN = 1;
 const GAMEOVER = 2;
-var spelStatus = SPELEN
+const UITLEG = 3;
+var spelStatus = UITLEG;
+
 
 var spelerX = 1250; // x-positie van speler
 var spelerY = 550; // y-positie van speler
@@ -68,6 +70,8 @@ var enemTyp1;
 var enemTyp2;
 var enemTyp3;
 var enemTyp4;
+
+var begin;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -75,6 +79,9 @@ var enemTyp4;
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
+
+
+
 var beweegAlles = function() {
   
   // speler
@@ -150,7 +157,7 @@ var verwerkBotsing = function() {
     enemHP3 === 100;
     enemHP4 === 200;
     
-  /*if(timeR >= 45 && enemHP1 >= 0){
+  if(timeR >= 45 && enemHP1 >= 0){
     enem1 = true;
   }
   else {
@@ -310,9 +317,10 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0 || timeR >= 300) {
+  if(kastHP <= 0 || timeR >= 180) {
     return true;
   }
+  
 };
 
 /* ********************************************* */
@@ -328,6 +336,7 @@ function preload() {
   enemTyp2 = loadImage('npc/soldier3.png');
   enemTyp3 = loadImage('npc/soldier8.png');
   enemTyp4 = loadImage('npc/soldier4.png');
+  begin = loadImage('dragonbaaaa.jpeg');
   
 };
 /**
@@ -341,7 +350,7 @@ function setup() {
 
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('green');
+  //background('green');
 }
 
 
@@ -351,7 +360,27 @@ function setup() {
  * de code in deze functie wordt 50 keer per seconde
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
+var uitleg1 = function(){
+  background('grey');
+  image(begin, 0, 0, 2500, 1100);
+  textSize(90);
+  fill('white');
+  text("press space to play", 400, 700);
+  text("use mouse and mouse click to move the character", 200, 300);
+  textSize(150);
+  text("The one who did it", 400, 130);
+  
+}
 function draw() {
+
+  if(spelStatus === UITLEG){
+    console.log('klkhj')
+    uitleg1();
+    if(keyIsDown(32)){
+    spelStatus = SPELEN;
+  }
+}
+
   if (spelStatus === SPELEN) {
     background('green');
     beweegAlles();
@@ -363,6 +392,7 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
+    if(kastHP <= 0){
     fill("grey");
     rect(150, 750, 2200, 450);
     fill("maroon");
@@ -370,6 +400,18 @@ function draw() {
     text(enD, 200, 910);
     text("time survived:", 200, 1075);
     text(floor(timeR), 1450, 1075);
+    }
     
+
+
+    
+    if(kastHP >= 0 && timeR >= 180){
+    fill("grey");
+    rect(150, 700, 1200, 450);
+    fill("maroon");
+    textSize(200);
+    text("you survived", 200, 860);
+    text("congrats", 200, 1025);
+    }
   }
 }

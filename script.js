@@ -344,10 +344,10 @@ var uitleg1 = function(){
   image(begin, 0, 0, 2500, 1100);
   textSize(90);
   fill('white');
-  text("press space to play", 400, 700);
-  text("use mouse and mouse click to move the character", 200, 300);
+  text("press space to play", 800, 700);
+  text("use mouse and mouse click to move the character", 200, 600);
   textSize(150);
-  text("The one who did it", 400, 130);
+  text("Sole survivor", 800, 170);
   
 }
 function draw() {

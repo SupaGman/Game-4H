@@ -38,17 +38,9 @@ var achtergrond;
 
 var timeR = 0;
 
-var xspawn1 = 200;
-var yspawn1 = 200;
 
-var xspawn2 = 2000;
-var yspawn2 = 200;
-
-var xspawn3 = 2000;
-var yspawn3 = 1000;
-
-var xspawn4 = 200;
-var yspawn4 = 1000;
+var xspawn = [200, 2000, 2000, 200];
+var yspawn = [200, 200, 1000, 1000];
 
 var enD = "GAMEOVER NOOB XD";
 
@@ -57,14 +49,12 @@ var kasT;
 var kastDes;
 var kastTOT = "/1000";
 
-var enemHP1 = 100;
 var enem1;
-var enemHP2 = 100;
 var enem2;
-var enemHP3 = 100;
 var enem3;
-var enemHP4 = 200;
 var enem4;
+
+var enemHP = [100, 100, 100, 200];
 
 var enemTyp1;
 var enemTyp2;
@@ -107,92 +97,81 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-  if(spelerX <= xspawn1 + 35 && spelerX >= xspawn1 - 35 && spelerY <= yspawn1 + 35     && spelerY >= yspawn1 - 35){
-    enemHP1--;
+  if(spelerX <= xspawn[0] + 35 && spelerX >= xspawn[0] - 35 && spelerY <= yspawn[0] + 35     && spelerY >= yspawn[0] - 35){
+    enemHP[0]--;
   }
-  if(spelerX >= xspawn2 - 35  && spelerX <= xspawn2 + 35 && spelerY <= yspawn2 + 35    && spelerY >= yspawn2 - 35){
-    enemHP2--;
+  if(spelerX >= xspawn[1] - 35  && spelerX <= xspawn[1] + 35 && spelerY <= yspawn[1] + 35    && spelerY >= yspawn[1] - 35){
+    enemHP[1]--;
   }
-  if(spelerX >= xspawn3 - 35 && spelerX <= xspawn3 + 35 && spelerY >= yspawn3 - 35     && spelerY <= yspawn3 + 35){
-    enemHP3--;
+  if(spelerX >= xspawn[2] - 35 && spelerX <= xspawn[2] + 35 && spelerY >= yspawn[2] - 35     && spelerY <= yspawn[2] + 35){
+    enemHP[2]--;
   }
-  if(spelerX <= xspawn4 + 35 && spelerX >= xspawn4 - 35 && spelerY >= yspawn4 - 35     && spelerY <= yspawn4 + 35){
-    enemHP4--;
+  if(spelerX <= xspawn[3] + 35 && spelerX >= xspawn[3] - 35 && spelerY >= yspawn[3] - 35     && spelerY <= yspawn[3] + 35){
+    enemHP[3]--;
   }
   
   // botsing kasteel tegen vijand en haalt hp weg van kasteel
-  if (xspawn1 >= kasteelX && yspawn1 >= kasteelY){
-    xspawn1 = xspawn1 - 1;
-    yspawn1 = yspawn1 - 0.4;
+  if (xspawn[0] >= kasteelX && yspawn[0] >= kasteelY){
+    xspawn[0] = xspawn[0] - 1;
+    yspawn[0] = yspawn[0] - 0.4;
     kastHP = kastHP - 0.05;
   }
-  if (xspawn2 <= kasteelX + 270 && yspawn2 >= kasteelY){
-    xspawn2 = xspawn2 + 1;
-    yspawn2 = yspawn2 - 0.6;
+  if (xspawn[1] <= kasteelX + 270 && yspawn[1] >= kasteelY){
+    xspawn[1] = xspawn[1] + 1;
+    yspawn[1] = yspawn[1] - 0.6;
     kastHP = kastHP - 0.1;
   }
-  if (xspawn3 <= kasteelX + 270 && yspawn3 >= kasteelY){
-    xspawn3 = xspawn3 + 1;
-    yspawn3 = yspawn3 + 0.7;
+  if (xspawn[2] <= kasteelX + 270 && yspawn[2] >= kasteelY){
+    xspawn[2] = xspawn[2] + 1;
+    yspawn[2] = yspawn[2] + 0.7;
     kastHP = kastHP - 0.05;
   }
-  if (xspawn4 >= kasteelX && yspawn4 >= kasteelY){
-    xspawn4 = xspawn4 - 1;
-    yspawn4 = yspawn4 + 0.5;
+  if (xspawn[3] >= kasteelX && yspawn[3] >= kasteelY){
+    xspawn[3] = xspawn[3] - 1;
+    yspawn[3] = yspawn[3] + 0.5;
     kastHP = kastHP - 0.05;
   }
   
   
   if (enem1 === false && enem2 === false && enem3 === false && enem4 === false && timeR > 40){
-    xspawn1 === 1000;
-    yspawn1 === 200;
-    xspawn2 === 2000;
-    yspawn2 === 200;
-    xspawn3 === 2000;
-    yspawn3 === 1000;
-    xspawn4 === 200;
-    yspawn4 === 1000;
-    enemHP1 === 100;
-    enemHP2 === 100;
-    enemHP3 === 100;
-    enemHP4 === 200;
+    xspawn[0] === 1000;
+    yspawn[0] === 200;
+    xspawn[1] === 2000;
+    yspawn[1] === 200;
+    xspawn[2] === 2000;
+    yspawn[2] === 1000;
+    xspawn[3] === 200;
+    yspawn[3] === 1000;
+    enemHP[0] === 100;
+    enemHP[1] === 100;
+    enemHP[2] === 100;
+    enemHP[3] === 200;
     
-  if(timeR >= 45 && enemHP1 >= 0){
+  if(timeR >= 45 && enemHP[0] >= 0){
     enem1 = true;
   }
   else {
     enem1 = false;
    }
-  if(timeR >= 50 && enemHP2 >= 0){
+  if(timeR >= 50 && enemHP[1] >= 0){
     enem2 = true;
   }
   else {
     enem2 = false;
   }
-  if(timeR >= 55 && enemHP3 >= 0){
+  if(timeR >= 55 && enemHP[2] >= 0){
     enem3 = true;
   }
   else {
     enem3 = false;
   }
-  if(timeR >= 60 && enemHP4 >= 0){
+  if(timeR >= 60 && enemHP[3] >= 0){
     enem4 = true;
   }
   else {
     enem4 = false;
   }
-    /*xspawn1 === 1000;
-    yspawn1 === 200;
-    xspawn2 === 2000;
-    yspawn2 === 200;
-    xspawn3 === 2000;
-    yspawn3 === 1000;
-    xspawn4 === 200;
-    yspawn4 === 1000;
-    enemHP1 === 100;
-    enemHP2 === 100;
-    enemHP3 === 100;
-    enemHP4 === 200;*/
+
   }
 };
 
@@ -236,25 +215,25 @@ var tekenAlles = function() {
   ellipse(vijandX, vijandY, 10, 10);
 
 //geeft laat enemy spawnen als ie hp heeft en de tijd rijp is
-  if(timeR >= 5 && enemHP1 >= 0){
+  if(timeR >= 5 && enemHP[0] >= 0){
     enem1 = true;
   }
   else {
     enem1 = false;
   }
-  if(timeR >= 10 && enemHP2 >= 0){
+  if(timeR >= 10 && enemHP[1] >= 0){
     enem2 = true;
   }
   else {
     enem2 = false;
   }
-  if(timeR >= 15 && enemHP3 >= 0){
+  if(timeR >= 15 && enemHP[2] >= 0){
     enem3 = true;
   }
   else {
     enem3 = false;
   }
-  if(timeR >= 20 && enemHP4 >= 0){
+  if(timeR >= 20 && enemHP[3] >= 0){
     enem4 = true;
   }
   else {
@@ -264,28 +243,28 @@ var tekenAlles = function() {
   fill("red");
 
   if(enem1 === true){
-    rect(xspawn1, yspawn1, 40, 70);
-    image(enemTyp1, xspawn1 - 25, yspawn1 - 25, 100, 100);
-    xspawn1++;
-    yspawn1 = yspawn1 + 0.4;
+    rect(xspawn[0], yspawn[0], 40, 70);
+    image(enemTyp1, xspawn[0] - 25, yspawn[0] - 25, 100, 100);
+    xspawn[0]++;
+    yspawn[0] = yspawn[0] + 0.4;
   }
   if(enem2 === true){
-    rect(xspawn2, yspawn2, 50, 50);
-    image(enemTyp2, xspawn2 - 10, yspawn2 - 10, 80, 80);
-    xspawn2--;
-    yspawn2 = yspawn2 + 0.6;
+    rect(xspawn[1], yspawn[1], 50, 50);
+    image(enemTyp2, xspawn[1] - 10, yspawn[1] - 10, 80, 80);
+    xspawn[1]--;
+    yspawn[1] = yspawn[1] + 0.6;
   }
   if(enem3 === true){
-    rect(xspawn3, yspawn3, 50, 50);
-    image(enemTyp3, xspawn3 - 25, yspawn3 - 25, 100, 100);
-    xspawn3--;
-    yspawn3 = yspawn3 - 0.7;
+    rect(xspawn[2], yspawn[2], 50, 50);
+    image(enemTyp3, xspawn[2] - 25, yspawn[2] - 25, 100, 100);
+    xspawn[2]--;
+    yspawn[2] = yspawn[2] - 0.7;
   }
   if(enem4 === true){
-    rect(xspawn4, yspawn4, 50, 50);
-    image(enemTyp4, xspawn4 - 40, yspawn4 - 40, 150, 150);
-    xspawn4++;
-    yspawn4 = yspawn4 - 0.5;
+    rect(xspawn[3], yspawn[3], 50, 50);
+    image(enemTyp4, xspawn[3] - 40, yspawn[3] - 40, 150, 150);
+    xspawn[3]++;
+    yspawn[3] = yspawn[3] - 0.5;
   }
  
   // kogel

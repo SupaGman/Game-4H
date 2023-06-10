@@ -106,7 +106,7 @@ var verwerkBotsing = function() {
   if(spelerX >= xspawn[2] - 35 && spelerX <= xspawn[2] + 35 && spelerY >= yspawn[2] - 35     && spelerY <= yspawn[2] + 35){
     enemHP[2]--;
   }
-  if(spelerX <= xspawn[3] + 35 && spelerX >= xspawn[3] - 35 && spelerY >= yspawn[3] - 35     && spelerY <= yspawn[3] + 35){
+  if(spelerX <= xspawn[3] + 60 && spelerX >= xspawn[3] - 60 && spelerY >= yspawn[3] - 60     && spelerY <= yspawn[3] + 60){
     enemHP[3]--;
   }
   
@@ -129,7 +129,7 @@ var verwerkBotsing = function() {
   if (xspawn[3] >= kasteelX && yspawn[3] >= kasteelY){
     xspawn[3] = xspawn[3] - 1;
     yspawn[3] = yspawn[3] + 0.5;
-    kastHP = kastHP - 0.05;
+    kastHP = kastHP - 0.15;
   }
   
   
@@ -243,26 +243,22 @@ var tekenAlles = function() {
   fill("red");
 
   if(enem1 === true){
-    rect(xspawn[0], yspawn[0], 40, 70);
     image(enemTyp1, xspawn[0] - 25, yspawn[0] - 25, 100, 100);
     xspawn[0]++;
     yspawn[0] = yspawn[0] + 0.4;
   }
   if(enem2 === true){
-    rect(xspawn[1], yspawn[1], 50, 50);
     image(enemTyp2, xspawn[1] - 10, yspawn[1] - 10, 80, 80);
     xspawn[1]--;
     yspawn[1] = yspawn[1] + 0.6;
   }
   if(enem3 === true){
-    rect(xspawn[2], yspawn[2], 50, 50);
     image(enemTyp3, xspawn[2] - 25, yspawn[2] - 25, 100, 100);
     xspawn[2]--;
     yspawn[2] = yspawn[2] - 0.7;
   }
   if(enem4 === true){
-    rect(xspawn[3], yspawn[3], 50, 50);
-    image(enemTyp4, xspawn[3] - 40, yspawn[3] - 40, 150, 150);
+    image(enemTyp4, xspawn[3] - 40, yspawn[3] - 40, 200, 200);
     xspawn[3]++;
     yspawn[3] = yspawn[3] - 0.5;
   }
@@ -296,7 +292,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0 || timeR >= 180) {
+  if(kastHP <= 0 || timeR >= 120) {
     return true;
   }
   
@@ -347,13 +343,12 @@ var uitleg1 = function(){
   text("press space to play", 800, 700);
   text("use mouse and mouse click to move the character", 200, 600);
   textSize(150);
-  text("Sole survivor", 800, 170);
+  text("Sole defender", 800, 170);
   
 }
 function draw() {
 
   if(spelStatus === UITLEG){
-    console.log('klkhj')
     uitleg1();
     if(keyIsDown(32)){
     spelStatus = SPELEN;
@@ -379,18 +374,19 @@ function draw() {
     text(enD, 200, 910);
     text("time survived:", 200, 1075);
     text(floor(timeR), 1450, 1075);
+    textSize(85);
+    text("ctrl + r to restart", 1700, 1075);
     }
     
-
-
-    
-    if(kastHP >= 0 && timeR >= 180){
+    if(kastHP >= 0 && timeR >= 120){
     fill("grey");
-    rect(150, 700, 1200, 450);
+    rect(150, 600, 1200, 650);
     fill("maroon");
     textSize(200);
-    text("you survived", 200, 860);
-    text("congrats", 200, 1025);
+    text("you survived", 200, 810);
+    text("congrats", 200, 955);
+    textSize(85);
+    text("ctrl + r to restart", 200, 1075);
     }
   }
 }

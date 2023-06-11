@@ -120,16 +120,16 @@ var verwerkBotsing = function() {
     if(spelerX <= xspawn[4] + 35 && spelerX >= xspawn[4] - 35 && spelerY <= yspawn[4] + 35     && spelerY >= yspawn[4] - 35){
     enemHP[4]--;
   }
-  if(spelerX >= xspawn[5] - 35  && spelerX <= xspawn[5] + 35 && spelerY <= yspawn[5] + 35    && spelerY >= yspawn[5] - 35){
+  if(spelerX >= xspawn[5] - 35  && spelerX <= xspawn[5] + 35 && spelerY <= yspawn[5] + 35 && spelerY >= yspawn[5] - 35){
     enemHP[5]--;
   }
-  if(spelerX >= xspawn[6] - 35 && spelerX <= xspawn[6] + 35 && spelerY >= yspawn[6] - 35     && spelerY <= yspawn[6] + 35){
+  if(spelerX >= xspawn[6] - 35 && spelerX <= xspawn[6] + 35 && spelerY >= yspawn[6] - 35 && spelerY <= yspawn[6] + 35){
     enemHP[6]--;
   }
-  if(spelerX <= xspawn[7] + 60 && spelerX >= xspawn[7] - 60 && spelerY >= yspawn[7] - 60     && spelerY <= yspawn[7] + 60){
+  if(spelerX <= xspawn[7] + 60 && spelerX >= xspawn[7] - 60 && spelerY >= yspawn[7] - 60 && spelerY <= yspawn[7] + 60){
     enemHP[7]--;
   }
-  if(spelerX <= xspawn[8] + 70 && spelerX >= xspawn[8] - 70 && spelerY <= yspawn[8] + 70     && spelerY >= yspawn[8] - 70){
+  if(spelerX <= xspawn[8] + 150 && spelerX >= xspawn[8] - 150 && spelerY <= yspawn[8] + 150 && spelerY >= yspawn[8] - 150){
     enemHP[8]--;
   }
   
@@ -176,8 +176,8 @@ var verwerkBotsing = function() {
   }
   if (xspawn[8] >= kasteelX && yspawn[8] >= kasteelY){
     xspawn[8] = xspawn[8] - 1;
-    yspawn[8] = yspawn[8] + 0.5;
-    kastHP = kastHP - 0.15;
+    yspawn[8] = yspawn[8] - 0.4;
+    kastHP = kastHP - 0.25;
   }
 };
 
@@ -251,33 +251,30 @@ var tekenAlles = function() {
   else {
     enem5 = false;
   }
-  if(timeR >= 35 && enemHP[5] >= 0){
+  if(timeR >= 45 && enemHP[5] >= 0){
     enem6 = true;
   }
   else {
     enem6 = false;
   }
-  if(timeR >= 40 && enemHP[6] >= 0){
+  if(timeR >= 50 && enemHP[6] >= 0){
     enem7 = true;
   }
   else {
     enem7 = false;
   }
-  if(timeR >= 45 && enemHP[7] >= 0){
+  if(timeR >= 55 && enemHP[7] >= 0){
     enem8 = true;
   }
   else {
     enem8 = false;
   }
-  if(timeR >= 60 && enemHP[8] >= 0){
+  if(timeR >= 70 && enemHP[8] >= 0){
     bossB = true;
   }
   else {
     bossB = false;
   }
-
-  
-  fill("red");
 
   if(enem1 === true){
     image(enemTyp1, xspawn[0] - 25, yspawn[0] - 25, 100, 100);
@@ -354,7 +351,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0 || timeR >= 120) {
+  if(kastHP <= 0 || timeR >= 120 || enemHP[0, 1, 2, 3, 4, 5, 6, 7, 8] <=0) {
     return true;
   }
   
@@ -441,7 +438,7 @@ function draw() {
     text("ctrl + r to restart", 1700, 1075);
     }
     
-    if(kastHP >= 0 && timeR >= 120){
+    if(kastHP >= 0 && timeR >= 120 && enemHP[0, 1, 2, 3, 4, 5, 6, 7, 8] <= 0 ){
     fill("grey");
     rect(150, 600, 1200, 650);
     fill("maroon");

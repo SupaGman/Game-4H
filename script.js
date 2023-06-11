@@ -351,7 +351,8 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0 || timeR >= 120;
+  if(kastHP <= 0 || timeR >= 120) {
+    return true;
   }
   
 };

@@ -39,8 +39,8 @@ var achtergrond;
 var timeR = 0;
 
 
-var xspawn = [200, 2000, 2000, 200];
-var yspawn = [200, 200, 1000, 1000];
+var xspawn = [200, 2000, 2000, 200, 200, 2000, 2000, 200, 200];
+var yspawn = [200, 200, 1000, 1000, 200, 200, 1000, 1000, 200];
 
 var enD = "GAMEOVER NOOB XD";
 
@@ -53,13 +53,21 @@ var enem1;
 var enem2;
 var enem3;
 var enem4;
+var enem5;
+var enem6;
+var enem7;
+var enem8;
 
-var enemHP = [100, 100, 100, 200];
+var enemHP = [100, 150, 80, 400, 100, 150, 80, 100, 200];
 
 var enemTyp1;
 var enemTyp2;
 var enemTyp3;
 var enemTyp4;
+var bossTyp;
+
+var boSS;
+var bossB;
 
 var begin;
 /* ********************************************* */
@@ -109,6 +117,21 @@ var verwerkBotsing = function() {
   if(spelerX <= xspawn[3] + 60 && spelerX >= xspawn[3] - 60 && spelerY >= yspawn[3] - 60     && spelerY <= yspawn[3] + 60){
     enemHP[3]--;
   }
+    if(spelerX <= xspawn[4] + 35 && spelerX >= xspawn[4] - 35 && spelerY <= yspawn[4] + 35     && spelerY >= yspawn[4] - 35){
+    enemHP[4]--;
+  }
+  if(spelerX >= xspawn[5] - 35  && spelerX <= xspawn[5] + 35 && spelerY <= yspawn[5] + 35    && spelerY >= yspawn[5] - 35){
+    enemHP[5]--;
+  }
+  if(spelerX >= xspawn[6] - 35 && spelerX <= xspawn[6] + 35 && spelerY >= yspawn[6] - 35     && spelerY <= yspawn[6] + 35){
+    enemHP[6]--;
+  }
+  if(spelerX <= xspawn[7] + 60 && spelerX >= xspawn[7] - 60 && spelerY >= yspawn[7] - 60     && spelerY <= yspawn[7] + 60){
+    enemHP[7]--;
+  }
+  if(spelerX <= xspawn[8] + 70 && spelerX >= xspawn[8] - 70 && spelerY <= yspawn[8] + 70     && spelerY >= yspawn[8] - 70){
+    enemHP[8]--;
+  }
   
   // botsing kasteel tegen vijand en haalt hp weg van kasteel
   if (xspawn[0] >= kasteelX && yspawn[0] >= kasteelY){
@@ -131,47 +154,30 @@ var verwerkBotsing = function() {
     yspawn[3] = yspawn[3] + 0.5;
     kastHP = kastHP - 0.15;
   }
-  
-  
-  if (enem1 === false && enem2 === false && enem3 === false && enem4 === false && timeR > 40){
-    xspawn[0] === 1000;
-    yspawn[0] === 200;
-    xspawn[1] === 2000;
-    yspawn[1] === 200;
-    xspawn[2] === 2000;
-    yspawn[2] === 1000;
-    xspawn[3] === 200;
-    yspawn[3] === 1000;
-    enemHP[0] === 100;
-    enemHP[1] === 100;
-    enemHP[2] === 100;
-    enemHP[3] === 200;
-    
-  if(timeR >= 45 && enemHP[0] >= 0){
-    enem1 = true;
+    if (xspawn[4] >= kasteelX && yspawn[4] >= kasteelY){
+    xspawn[4] = xspawn[4] - 1;
+    yspawn[4] = yspawn[4] - 0.4;
+    kastHP = kastHP - 0.05;
   }
-  else {
-    enem1 = false;
-   }
-  if(timeR >= 50 && enemHP[1] >= 0){
-    enem2 = true;
+  if (xspawn[5] <= kasteelX + 270 && yspawn[5] >= kasteelY){
+    xspawn[5] = xspawn[5] + 1;
+    yspawn[5] = yspawn[5] - 0.6;
+    kastHP = kastHP - 0.1;
   }
-  else {
-    enem2 = false;
+  if (xspawn[6] <= kasteelX + 270 && yspawn[6] >= kasteelY){
+    xspawn[6] = xspawn[6] + 1;
+    yspawn[6] = yspawn[6] + 0.7;
+    kastHP = kastHP - 0.05;
   }
-  if(timeR >= 55 && enemHP[2] >= 0){
-    enem3 = true;
+  if (xspawn[7] >= kasteelX && yspawn[7] >= kasteelY){
+    xspawn[7] = xspawn[7] - 1;
+    yspawn[7] = yspawn[7] + 0.5;
+    kastHP = kastHP - 0.15;
   }
-  else {
-    enem3 = false;
-  }
-  if(timeR >= 60 && enemHP[3] >= 0){
-    enem4 = true;
-  }
-  else {
-    enem4 = false;
-  }
-
+  if (xspawn[8] >= kasteelX && yspawn[8] >= kasteelY){
+    xspawn[8] = xspawn[8] - 1;
+    yspawn[8] = yspawn[8] + 0.5;
+    kastHP = kastHP - 0.15;
   }
 };
 
@@ -239,6 +245,37 @@ var tekenAlles = function() {
   else {
     enem4 = false;
   }
+  if(timeR >= 30 && enemHP[4] >= 0){
+    enem5 = true;
+  }
+  else {
+    enem5 = false;
+  }
+  if(timeR >= 35 && enemHP[5] >= 0){
+    enem6 = true;
+  }
+  else {
+    enem6 = false;
+  }
+  if(timeR >= 40 && enemHP[6] >= 0){
+    enem7 = true;
+  }
+  else {
+    enem7 = false;
+  }
+  if(timeR >= 45 && enemHP[7] >= 0){
+    enem8 = true;
+  }
+  else {
+    enem8 = false;
+  }
+  if(timeR >= 60 && enemHP[8] >= 0){
+    bossB = true;
+  }
+  else {
+    bossB = false;
+  }
+
   
   fill("red");
 
@@ -248,7 +285,7 @@ var tekenAlles = function() {
     yspawn[0] = yspawn[0] + 0.4;
   }
   if(enem2 === true){
-    image(enemTyp2, xspawn[1] - 10, yspawn[1] - 10, 80, 80);
+    image(enemTyp2, xspawn[1] - 10, yspawn[1] - 10, 100, 100);
     xspawn[1]--;
     yspawn[1] = yspawn[1] + 0.6;
   }
@@ -262,7 +299,32 @@ var tekenAlles = function() {
     xspawn[3]++;
     yspawn[3] = yspawn[3] - 0.5;
   }
- 
+  if(enem5 === true){
+    image(enemTyp1, xspawn[4] - 25, yspawn[4] - 25, 100, 100);
+    xspawn[4]++;
+    yspawn[4] = yspawn[4] + 0.4;
+  }
+  if(enem6 === true){
+    image(enemTyp2, xspawn[5] - 10, yspawn[5] - 10, 100, 100);
+    xspawn[5]--;
+    yspawn[5] = yspawn[5] + 0.6;
+  }
+  if(enem7 === true){
+    image(enemTyp3, xspawn[6] - 25, yspawn[6] - 25, 100, 100);
+    xspawn[6]--;
+    yspawn[6] = yspawn[6] - 0.7;
+  }
+  if(enem8 === true){
+    image(enemTyp4, xspawn[7] - 40, yspawn[7] - 40, 200, 200);
+    xspawn[7]++;
+    yspawn[7] = yspawn[7] - 0.5;
+  }
+  if(bossB === true){
+    image(boSS, xspawn[8] - 40, yspawn[8] - 40, 400, 400);
+    xspawn[8]++;
+    yspawn[8] = yspawn[8] + 0.4;
+  }
+
   // kogel
 
   // speler
@@ -312,6 +374,7 @@ function preload() {
   enemTyp3 = loadImage('npc/soldier8.png');
   enemTyp4 = loadImage('npc/soldier4.png');
   begin = loadImage('dragonbaaaa.jpeg');
+  boSS = loadImage('boss.webp');
   
 };
 /**

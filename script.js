@@ -49,21 +49,11 @@ var kasT;
 var kastDes;
 var kastTOT = "/1000";
 
-var enem1;
-var enem2;
-var enem3;
-var enem4;
-var enem5;
-var enem6;
-var enem7;
-var enem8;
+var enem = [null, null, null, null, null, null, null, null];
 
 var enemHP = [100, 150, 80, 400, 100, 150, 80, 100, 1000];
 
-var enemTyp1;
-var enemTyp2;
-var enemTyp3;
-var enemTyp4;
+var enemTyp = [null, null, null, null];
 var bossTyp;
 
 var boSS;
@@ -221,53 +211,56 @@ var tekenAlles = function() {
   ellipse(vijandX, vijandY, 10, 10);
 
 //geeft laat enemy spawnen als ie hp heeft en de tijd rijp is
+
+
+  
   if(timeR >= 5 && enemHP[0] >= 0){
-    enem1 = true;
+    enem[0] = true;
   }
   else {
-    enem1 = false;
+    enem[0] = false;
   }
   if(timeR >= 10 && enemHP[1] >= 0){
-    enem2 = true;
+    enem[1] = true;
   }
   else {
-    enem2 = false;
+    enem[1] = false;
   }
   if(timeR >= 15 && enemHP[2] >= 0){
-    enem3 = true;
+    enem[2] = true;
   }
   else {
-    enem3 = false;
+    enem[2] = false;
   }
   if(timeR >= 20 && enemHP[3] >= 0){
-    enem4 = true;
+    enem[3] = true;
   }
   else {
-    enem4 = false;
+    enem[3] = false;
   }
   if(timeR >= 30 && enemHP[4] >= 0){
-    enem5 = true;
+    enem[4] = true;
   }
   else {
-    enem5 = false;
+    enem[4] = false;
   }
   if(timeR >= 45 && enemHP[5] >= 0){
-    enem6 = true;
+    enem[5] = true;
   }
   else {
-    enem6 = false;
+    enem[5] = false;
   }
   if(timeR >= 50 && enemHP[6] >= 0){
-    enem7 = true;
+    enem[6]= true;
   }
   else {
-    enem7 = false;
+    enem[6] = false;
   }
   if(timeR >= 55 && enemHP[7] >= 0){
-    enem8 = true;
+    enem[7] = true;
   }
   else {
-    enem8 = false;
+    enem[7] = false;
   }
   if(timeR >= 70 && enemHP[8] >= 0){
     bossB = true;
@@ -276,43 +269,44 @@ var tekenAlles = function() {
     bossB = false;
   }
 
-  if(enem1 === true){
-    image(enemTyp1, xspawn[0] - 25, yspawn[0] - 25, 100, 100);
+
+  if(enem[0] === true){
+    image(enemTyp[0], xspawn[0] - 25, yspawn[0] - 25, 100, 100);
     xspawn[0]++;
     yspawn[0] = yspawn[0] + 0.4;
   }
-  if(enem2 === true){
-    image(enemTyp2, xspawn[1] - 10, yspawn[1] - 10, 100, 100);
+  if(enem[1] === true){
+    image(enemTyp[1], xspawn[1] - 10, yspawn[1] - 10, 100, 100);
     xspawn[1]--;
     yspawn[1] = yspawn[1] + 0.6;
   }
-  if(enem3 === true){
-    image(enemTyp3, xspawn[2] - 25, yspawn[2] - 25, 100, 100);
+  if(enem[2] === true){
+    image(enemTyp[2], xspawn[2] - 25, yspawn[2] - 25, 100, 100);
     xspawn[2]--;
     yspawn[2] = yspawn[2] - 0.7;
   }
-  if(enem4 === true){
-    image(enemTyp4, xspawn[3] - 40, yspawn[3] - 40, 200, 200);
+  if(enem[3] === true){
+    image(enemTyp[3], xspawn[3] - 40, yspawn[3] - 40, 200, 200);
     xspawn[3]++;
     yspawn[3] = yspawn[3] - 0.5;
   }
-  if(enem5 === true){
-    image(enemTyp1, xspawn[4] - 25, yspawn[4] - 25, 100, 100);
+  if(enem[4]=== true){
+    image(enemTyp[0], xspawn[4] - 25, yspawn[4] - 25, 100, 100);
     xspawn[4]++;
     yspawn[4] = yspawn[4] + 0.4;
   }
-  if(enem6 === true){
-    image(enemTyp2, xspawn[5] - 10, yspawn[5] - 10, 100, 100);
+  if(enem[5] === true){
+    image(enemTyp[1], xspawn[5] - 10, yspawn[5] - 10, 100, 100);
     xspawn[5]--;
     yspawn[5] = yspawn[5] + 0.6;
   }
-  if(enem7 === true){
-    image(enemTyp3, xspawn[6] - 25, yspawn[6] - 25, 100, 100);
+  if(enem[6] === true){
+    image(enemTyp[2], xspawn[6] - 25, yspawn[6] - 25, 100, 100);
     xspawn[6]--;
     yspawn[6] = yspawn[6] - 0.7;
   }
-  if(enem8 === true){
-    image(enemTyp4, xspawn[7] - 40, yspawn[7] - 40, 200, 200);
+  if(enem[7] === true){
+    image(enemTyp[3], xspawn[7] - 40, yspawn[7] - 40, 200, 200);
     xspawn[7]++;
     yspawn[7] = yspawn[7] - 0.5;
   }
@@ -366,10 +360,10 @@ function preload() {
   kasteel = loadImage('castlevania.png');
   soldier = loadImage('soldier.png');
   kastDes = loadImage('kastDes.png');
-  enemTyp1 = loadImage('npc/soldier2.png');
-  enemTyp2 = loadImage('npc/soldier3.png');
-  enemTyp3 = loadImage('npc/soldier8.png');
-  enemTyp4 = loadImage('npc/soldier4.png');
+  enemTyp[0] = loadImage('npc/soldier2.png');
+  enemTyp[1] = loadImage('npc/soldier3.png');
+  enemTyp[2] = loadImage('npc/soldier8.png');
+  enemTyp[3] = loadImage('npc/soldier4.png');
   begin = loadImage('dragonbaaaa.jpeg');
   boSS = loadImage('boss.webp');
   

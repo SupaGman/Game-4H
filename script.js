@@ -129,7 +129,7 @@ var verwerkBotsing = function() {
   if(spelerX <= xspawn[7] + 60 && spelerX >= xspawn[7] - 60 && spelerY >= yspawn[7] - 60 && spelerY <= yspawn[7] + 60){
     enemHP[7]--;
   }
-  if(spelerX <= xspawn[8] + 150 && spelerX >= xspawn[8] - 150 && spelerY <= yspawn[8] + 150 && spelerY >= yspawn[8] - 150){
+  if(spelerX <= xspawn[8] + 200 && spelerX >= xspawn[8] - 200 && spelerY <= yspawn[8] + 200 && spelerY >= yspawn[8] - 200){
     enemHP[8]--;
   }
   
@@ -176,7 +176,7 @@ var verwerkBotsing = function() {
   }
   if (xspawn[8] >= kasteelX && yspawn[8] >= kasteelY){
     xspawn[8] = xspawn[8] - 1;
-    yspawn[8] = yspawn[8] - 0.4;
+    yspawn[8] = yspawn[8] - 0.2;
     kastHP = kastHP - 0.25;
   }
 };
@@ -319,7 +319,7 @@ var tekenAlles = function() {
   if(bossB === true){
     image(boSS, xspawn[8] - 40, yspawn[8] - 40, 400, 400);
     xspawn[8]++;
-    yspawn[8] = yspawn[8] + 0.4;
+    yspawn[8] = yspawn[8] + 0.2;
   }
 
   // kogel
@@ -351,8 +351,7 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
-  if(kastHP <= 0 || timeR >= 120 || enemHP[0, 1, 2, 3, 4, 5, 6, 7, 8] <=0) {
-    return true;
+  if(kastHP <= 0 || timeR >= 120;
   }
   
 };
@@ -438,7 +437,7 @@ function draw() {
     text("ctrl + r to restart", 1700, 1075);
     }
     
-    if(kastHP >= 0 && timeR >= 120 && enemHP[0, 1, 2, 3, 4, 5, 6, 7, 8] <= 0 ){
+    if(kastHP >= 0 && timeR >= 120){
     fill("grey");
     rect(150, 600, 1200, 650);
     fill("maroon");

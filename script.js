@@ -58,7 +58,7 @@ var enem6;
 var enem7;
 var enem8;
 
-var enemHP = [100, 150, 80, 400, 100, 150, 80, 100, 200];
+var enemHP = [100, 150, 80, 400, 100, 150, 80, 100, 700];
 
 var enemTyp1;
 var enemTyp2;
